@@ -1,7 +1,8 @@
 package esepunittests
 
 type GradeCalculator struct {
-	grades []Grade
+	grades        []Grade
+	passThreshold int
 }
 
 type GradeType int
@@ -28,9 +29,10 @@ type Grade struct {
 	Type  GradeType
 }
 
-func NewGradeCalculator() *GradeCalculator {
+func NewGradeCalculator(passThreshold int) *GradeCalculator {
 	return &GradeCalculator{
-		grades: make([]Grade, 0),
+		grades:        make([]Grade, 0),
+		passThreshold: passThreshold,
 	}
 }
 
@@ -48,6 +50,10 @@ func (gc *GradeCalculator) GetFinalGrade() string {
 	}
 
 	return "F"
+}
+
+func (gc *GradeCalculator) GetPassFail() string {
+	return ""
 }
 
 func (gc *GradeCalculator) AddGrade(name string, grade int, gradeType GradeType) {

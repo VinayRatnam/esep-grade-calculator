@@ -53,7 +53,11 @@ func (gc *GradeCalculator) GetFinalGrade() string {
 }
 
 func (gc *GradeCalculator) GetPassFail() string {
-	return ""
+	if gc.calculateNumericalGrade() >= gc.passThreshold {
+		return "Pass"
+	}
+
+	return "Fail"
 }
 
 func (gc *GradeCalculator) AddGrade(name string, grade int, gradeType GradeType) {
